@@ -13,7 +13,8 @@
   --pv-radius-sm: 999px;
   --pv-shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.6);
   --pv-shadow-subtle: 0 10px 30px rgba(0, 0, 0, 0.4);
-  --pv-font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif;
+  --pv-font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif;
+  --pv-font-display: 'Playfair Display', 'Times New Roman', serif;
 }
 
 *,
@@ -28,6 +29,7 @@ body {
   background: radial-gradient(circle at top, #1b1f35 0, #050610 55%, #010006 100%);
   color: var(--pv-text);
   -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
 }
 
 img {
@@ -54,6 +56,7 @@ a {
   backdrop-filter: blur(18px);
   background: linear-gradient(to bottom, rgba(5, 6, 16, 0.96), rgba(5, 6, 16, 0.88));
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.55);
 }
 
 .pv-header-inner {
@@ -64,7 +67,8 @@ a {
 }
 
 .pv-logo-main {
-  font-weight: 700;
+  font-family: var(--pv-font-display);
+  font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-size: 14px;
@@ -87,6 +91,7 @@ a {
   position: relative;
   padding: 4px 0;
   color: var(--pv-muted);
+  transition: color 0.18s ease-out;
 }
 
 .pv-nav a::after {
@@ -116,6 +121,12 @@ a {
   border: 1px solid rgba(255, 255, 255, 0.16);
   background: radial-gradient(circle at top left, rgba(224, 167, 90, 0.26), transparent 55%);
   color: var(--pv-text);
+  transition: background 0.18s ease-out, transform 0.18s ease-out, box-shadow 0.18s ease-out;
+}
+
+.pv-admin-link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.5);
 }
 
 .pv-hero {
@@ -131,6 +142,7 @@ a {
 
 .pv-hero-text h1 {
   font-size: clamp(2.4rem, 3vw, 3rem);
+  font-family: var(--pv-font-display);
   letter-spacing: 0.02em;
   margin-bottom: 12px;
 }
@@ -160,6 +172,8 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.16s ease-out, box-shadow 0.16s ease-out, background 0.16s ease-out,
+    border-color 0.16s ease-out, color 0.16s ease-out;
 }
 
 .pv-btn-primary {
@@ -168,10 +182,22 @@ a {
   box-shadow: var(--pv-shadow-subtle);
 }
 
+.pv-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+}
+
 .pv-btn-ghost {
   color: var(--pv-text);
   border: 1px solid rgba(255, 255, 255, 0.25);
   background: rgba(5, 6, 22, 0.7);
+}
+
+.pv-btn-ghost:hover {
+  border-color: rgba(251, 211, 141, 0.7);
+  background: rgba(10, 10, 32, 0.95);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65);
 }
 
 .pv-btn-full {
@@ -181,6 +207,7 @@ a {
 .pv-hero-gallery {
   position: relative;
   height: 280px;
+  perspective: 1000px;
 }
 
 .pv-hero-img {
@@ -190,6 +217,8 @@ a {
   background-size: cover;
   background-position: center;
   box-shadow: var(--pv-shadow-soft);
+  transform-origin: center;
+  transition: transform 0.4s ease-out, opacity 0.4s ease-out, box-shadow 0.4s ease-out;
 }
 
 .pv-hero-img-1 {
@@ -207,6 +236,18 @@ a {
     url('/images/sample-pheran-3.jpg');
   transform: translate(-32px, -26px) scale(0.85);
   opacity: 0.78;
+}
+
+.pv-hero-gallery:hover .pv-hero-img-1 {
+  transform: translate(0, 6px) scale(0.98) rotateY(-3deg);
+}
+
+.pv-hero-gallery:hover .pv-hero-img-2 {
+  transform: translate(36px, 18px) scale(0.94) rotateY(4deg);
+}
+
+.pv-hero-gallery:hover .pv-hero-img-3 {
+  transform: translate(-30px, -18px) scale(0.88) rotateY(-6deg);
 }
 
 .pv-section {
@@ -245,6 +286,13 @@ a {
   padding: 16px 16px 18px;
   border: 1px solid var(--pv-border);
   box-shadow: var(--pv-shadow-subtle);
+  transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, border-color 0.18s ease-out;
+}
+
+.pv-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(251, 211, 141, 0.45);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
 }
 
 .pv-product-card-img {
@@ -426,6 +474,10 @@ a {
   gap: 8px;
   font-size: 11px;
   color: var(--pv-muted);
+}
+
+.pv-footer-inner strong {
+  color: #fbd38d;
 }
 
 /* Admin page */
